@@ -1,0 +1,14 @@
+{
+    "name": "andrej/portfolio",
+    "type": "project",
+    "require": {
+        "monolog/monolog": "2.8.0",
+        "larapack/dd": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "AKport\\": "src\\",
+            "SqrtApp\\": "public_html\\sqrt\\"
+        }
+    }
+}

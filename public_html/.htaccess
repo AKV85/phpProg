@@ -1,0 +1,22 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /index.php [L,QSA]
+
+
+#"RewriteEngine" įjungia "Apache" serverio perrašymo variklį. Tai reiškia, kad visi užklausos
+# bus patikrinami ir, jei reikia, perrašytos pagal nustatytas taisykles.
+#
+#"RewriteCond" yra sąlygos, kurios nustato, ar tam tikras užklausimas turėtų būti perrašytas. Pavyzdžiui:
+#
+#"%{REQUEST_FILENAME} !-f" - tai reiškia, kad užklausimas neturi būti failas.
+#"%{REQUEST_FILENAME} !-d" - tai reiškia, kad užklausimas neturi būti katalogas.
+#"RewriteRule" yra taisyklė, kuri nustato, kaip užklausimas turi būti perrašytas. Pavyzdžiui:
+#
+#"^.*$" - tai reiškia, kad perrašoma bet koks užklausimas.
+#"/index.php" - tai reiškia, kad perrašytas užklausimas bus nukreipiamas į "index.php" failą.
+#"[L,QSA]" - tai reiškia, kad ši taisyklė yra paskutinė ir visi užklausimo parametrai
+# (pavyzdžiui, "GET" ir "POST") bus perduoti į "index.php" failą su "QSA" (Query String Append) parametru.
+#Taigi, ši konfigūracija reiškia, kad visi užklausimai, kurie nėra failai ar katalogai, bus perrašyti ir nukreipiami
+# į "index.php" failą su visomis užklausimo parametrais. Tai yra naudinga, kai norite, kad visi užklausimai
+#  būtų apdorojami per vieną failą (pavyzdžiui, "index.php"), o ne ieškoti atitinkamų failų ar katalogų serveryje.

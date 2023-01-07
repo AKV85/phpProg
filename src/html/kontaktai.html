@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>puslapio pavadinimas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/rwd.css">
+
+
+</head>
+<body>
+<div class="wraper">
+  <header>
+    <div class="logo"><img
+            src="https://www.unboxsocial.com/wp-content/uploads/2019/12/audi-vs-bmw-vs-mercedes-benz-1.jpg"
+            alt="logotipas">
+    </div>
+    <div class="slogan">Aš esu - jo didenybė INTERNETAS
+    </div>
+    <nav>
+      <ul>
+
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <form action="https://localhost/kursiuduomenis.php" method="GET"
+          class="container-fluid">
+      <br>
+      <div class="row">
+        <div class="col-2">
+          <label for="fn" class="form-label">Vardas</label>
+        </div>
+        <div class="col">
+          <input name="firstname" type="text" id="fn"
+                 class="form-control"/>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-2">
+          <label for="sn" class="form-label">Pavardė</label>
+        </div>
+        <div class="col">
+          <input name="surname" type="text" id="sn"
+                 class="form-control"/>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-2">
+          <label for="ml" class="form-label">E-mail</label>
+        </div>
+        <div class="col">
+          <input name="email" type="text" id="ml"
+                 class="form-control"/>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-2">
+          <label for="qtype" class="form-label">Pasirinkti</label>
+        </div>
+        <div class="col">
+          <select name="q_type" id="qtype" class="form-control">
+            <option value="ats1">Dėl pirkimo</option>
+            <option value="ats2">Dėl testavimo</option>
+            <option value="ats3">Kitas klausymas</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-2">
+          <label for="zinute" class="form-label">Jūsų žinutė</label>
+        </div>
+        <br>
+        <div class="col">
+                    <textarea name="message" rows="10" cols="30"
+                              id="zinute" class="form-control">Sveiki,
+                    </textarea>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-8">
+
+        </div>
+        <div class="col">
+          <input value="Siusti" type="submit" class="form-control btn btn-secondary"/>
+        </div>
+      </div>
+    </form>
+  </main>
+  <aside>
+    <div class="reklama">Uno Reklama</div>
+    <div class="reklama">Dos Reklama</div>
+    <div class="reklama">Tres Reklama</div>
+  </aside>
+  <footer>
+    <b>Visos teisės saugomos &copy; 2022</b>
+  </footer>
+  <script src="js/events.js"></script>
+</div>
+</body>
+</html>
