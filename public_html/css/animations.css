@@ -1,0 +1,19 @@
+@keyframes mano-animacija {
+    0% {
+        background-color: black;
+        color: burlywood;
+    }
+    100% {
+        background-color: burlywood;
+        color: #383838;
+    }
+}
+
+header nav li:hover {
+    animation: mano-animacija 700ms forwards;
+    transition: background-color;
+}
+
+nav li a:hover {
+    color: #6c757d;
+}

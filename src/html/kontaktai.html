@@ -1,111 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>puslapio pavadinimas</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/rwd.css">
+    <title>Kontaktai</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/variable.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </head>
 <body>
-<div class="wraper">
-  <header>
-    <div class="logo"><img
-            src="https://www.unboxsocial.com/wp-content/uploads/2019/12/audi-vs-bmw-vs-mercedes-benz-1.jpg"
-            alt="logotipas">
-    </div>
-    <div class="slogan">Aš esu - jo didenybė INTERNETAS
-    </div>
-    <nav>
-      <ul>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand nav-link active" href="portfolio">PORTFOLIO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <form action="https://localhost/kursiuduomenis.php" method="GET"
-          class="container-fluid">
-      <br>
-      <div class="row">
-        <div class="col-2">
-          <label for="fn" class="form-label">Vardas</label>
-        </div>
-        <div class="col">
-          <input name="firstname" type="text" id="fn"
-                 class="form-control"/>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-2">
-          <label for="sn" class="form-label">Pavardė</label>
-        </div>
-        <div class="col">
-          <input name="surname" type="text" id="sn"
-                 class="form-control"/>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-2">
-          <label for="ml" class="form-label">E-mail</label>
-        </div>
-        <div class="col">
-          <input name="email" type="text" id="ml"
-                 class="form-control"/>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-2">
-          <label for="qtype" class="form-label">Pasirinkti</label>
-        </div>
-        <div class="col">
-          <select name="q_type" id="qtype" class="form-control">
-            <option value="ats1">Dėl pirkimo</option>
-            <option value="ats2">Dėl testavimo</option>
-            <option value="ats3">Kitas klausymas</option>
-          </select>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-2">
-          <label for="zinute" class="form-label">Jūsų žinutė</label>
-        </div>
-        <br>
-        <div class="col">
-                    <textarea name="message" rows="10" cols="30"
-                              id="zinute" class="form-control">Sveiki,
-                    </textarea>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-8">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="apie">APIE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="uzduotys">UŽDUOTYS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="kontaktai">KONTAKTAI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="blog">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="pranesimas">PARAŠYK MAN!</a>
+                    </li>
+                </ul>
+                    </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <form action="https://localhost/kursiuduomenis.php" method="post"
+              class="container">
+            <br>
+            <div class="form-group row text-center">
+                    <label for="fn" class="col-sm-2 col-form-label">Vardas</label>
+                    <div class="col-sm-10">
+                     <input name="firstname" type="text" id="fn"
+                           class="form-control"
+                           placeholder="First name"/>
+                     </div>
+            </div>
+            <br>
+            <div class="form-group row text-center">
+                <label for="ln" class="col-sm-2 col-form-label">Pavarde</label>
+                <div class="col-sm-10">
+                    <input name="lastname" type="text" id="ln"
+                           class="form-control"
+                           placeholder="Last name"/>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row text-center">
+                <label for="ml" class="col-sm-2 col-form-label">E-mail</label>
+                <div class="col-sm-10">
+                    <input name="email" type="text" id="ml"
+                           class="form-control"
+                           placeholder="Email"/>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row text-center">
+                <label for="qtype" class="col-sm-2 col-form-label">Pasirinkti</label>
+                <div class="col-sm-10">
+                    <select name="q_type" id="qtype"
+                           class="form-control"
+                           placeholder="Email"/>
+                    <option value="ats1">Dėl HTML/CSS užduočių</option>
+                    <option value="ats2">Dėl JS užduočių</option>
+                    <option value="ats3">Dėl PHP užduočių</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row text-center">
+                <label for="zinute" class="col-sm-2 col-form-label">Jūsų žinutė</label>
+                <div class="col-sm-10">
+                <textarea name="message" rows="10" cols="30"
+                          id="zinute" class="form-control">Sveiki,
+                </textarea>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col">
+                    <input value="Siusti" type="submit" class="form-control btn btn-secondary"/>
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer class="mt-2 text-muted fixed-bottom">
 
+        <div class="row">
+            <div class="align-text-bottom col-3 p-5 bg-light">
+                &copy; 2023 Copyright
+            </div>
+            <nav class="col-9 navbar navbar-expand navbar-light bg-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="apie">APIE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="uzduotys">UŽDUOTYS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="kontaktai">KONTAKTAI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="blog">BLOG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="pranesimas">PARAŠYK MAN!</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <div class="col">
-          <input value="Siusti" type="submit" class="form-control btn btn-secondary"/>
-        </div>
-      </div>
-    </form>
-  </main>
-  <aside>
-    <div class="reklama">Uno Reklama</div>
-    <div class="reklama">Dos Reklama</div>
-    <div class="reklama">Tres Reklama</div>
-  </aside>
-  <footer>
-    <b>Visos teisės saugomos &copy; 2022</b>
-  </footer>
-  <script src="js/events.js"></script>
-</div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,244 @@
+@media only screen and (max-width: 600px) {
+    .wrapper {
+        height: 100%;
+        width: 400px;
+        display: grid;
+        grid-template-areas:
+        'h'
+        'm'
+        'f'
+    ;
+    }
+
+    .wrapper > header {
+        display: grid;
+        grid-template-areas:
+        'header'
+        'navigation'
+    ;
+        place-items: center;
+    }
+
+    .about {
+        display: grid;
+        grid-template-areas:
+        'image'
+        'info'
+    ;
+        grid-gap: 10px;
+    }
+
+    .about > .image {
+        grid-area: image;
+    }
+
+    .profile-photo > img {
+        border-radius: 500px;
+        width: 100%;
+    }
+
+    .about > .info {
+        grid-area: info;
+    }
+
+    .info > h1 {
+        text-align: center;
+    }
+
+    .contact-info > li {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .project {
+        display: grid;
+        grid-template-areas:
+        'header'
+        'image'
+        'paragraph'
+        'link'
+    ;
+        grid-gap: 10px;
+        grid-template-rows: 60px auto 80px auto;
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .wrapper > footer {
+        display: grid;
+        grid-template-areas:
+        'license'
+        'contacts'
+    ;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .wrapper {
+        height: 100%;
+        width: 500px;
+        display: grid;
+        grid-template-areas:
+        'h'
+        'm'
+        'f'
+    ;
+    }
+
+    .wrapper > header {
+        display: grid;
+        grid-template-areas:
+        'header'
+        'navigation'
+    ;
+        place-items: center;
+    }
+
+    .about {
+        display: grid;
+        grid-template-areas:
+        'image'
+        'info'
+    ;
+        grid-gap: 10px;
+    }
+
+    .about .image {
+        grid-area: image;
+    }
+
+    .profile-photo > img {
+        border-radius: 500px;
+        width: 100%;
+    }
+
+    .about .info {
+        grid-area: info;
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .wrapper > footer {
+        display: grid;
+        grid-template-areas:
+        'license'
+        'contacts'
+    ;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .wrapper {
+        height: 100%;
+        width: 700px;
+        display: grid;
+        grid-template-areas:
+        'h'
+        'm'
+        'f'
+    ;
+    }
+
+    .profile-photo > img {
+        border-radius: 500px;
+        width: 100%;
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .wrapper > footer {
+        display: grid;
+        grid-template-areas:
+        'license'
+        'contacts'
+    ;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .wrapper {
+        height: 100%;
+        width: 900px;
+        display: grid;
+        grid-template-areas:
+        'h'
+        'm'
+        'f'
+    ;
+    }
+
+    .wrapper > header {
+        display: grid;
+        grid-template-areas:
+        'header navigation'
+    ;
+    }
+
+    .wrapper > main {
+        display: grid;
+        grid-template-areas:
+        'about'
+        'projects'
+    ;
+    }
+
+    .about {
+        display: grid;
+        grid-template-areas:
+        'image line info info info info'
+    ;
+        grid-gap: 10px;
+    }
+
+    .profile-photo > img {
+        width: 90%;
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .wrapper > footer {
+        display: grid;
+        grid-template-areas:
+        'license contacts'
+    ;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .wrapper {
+        height: 100%;
+        width: 1200px;
+        display: grid;
+        grid-template-areas:
+        'h'
+        'm'
+        'f';
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: none;
+        grid-gap: 10px;
+    }
+}

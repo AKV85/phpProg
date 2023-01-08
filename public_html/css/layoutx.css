@@ -1,0 +1,178 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Wrapper layout - Start */
+.wrapper {
+    height: 100%;
+    width: 1200px;
+    display: grid;
+    grid-template-areas:
+        'h'
+        'm'
+        'f'
+;
+}
+
+.wrapper > header {
+    grid-area: h;
+}
+
+.wrapper > main {
+    grid-area: m;
+}
+
+.wrapper > footer {
+    grid-area: f;
+}
+/* Wrapper layout - End */
+/* Header layout - Start */
+.wrapper > header {
+    display: grid;
+    grid-template-areas:
+        'header navigation'
+;
+}
+
+header > .portfolio {
+    display: grid;
+    grid-area: header;
+    align-items: center;
+    justify-content: left;
+}
+
+header > nav {
+    display: grid;
+    grid-area: navigation;
+    align-items: center;
+    justify-content: right;
+    margin-right: 1%;
+}
+/* Header layout - End */
+/* Main layout - Start */
+.wrapper > main {
+    display: grid;
+    grid-template-areas:
+        'about'
+        'projects'
+;
+}
+
+main > .about {
+    grid-area: about;
+}
+
+main > .projects {
+    grid-area: projects;
+}
+
+/* About section layout - Start */
+.about {
+    display: grid;
+    grid-template-areas:
+        'image line info info info info'
+;
+    grid-gap: 10px;
+}
+
+.about > .image {
+    grid-area: image;
+}
+
+.about > .vertical-line {
+    grid-area: line;
+}
+
+.about > .info {
+    grid-area: info;
+}
+/* Info subsection layout - Start */
+.info {
+    display: grid;
+    grid-template-areas:
+        'heading'
+        'line1'
+        'paragraph'
+        'line2'
+        'contacts'
+;
+    grid-gap: 10px;
+}
+
+.info > h1 {
+    grid-area: heading;
+}
+
+.info > .horizontal-line1 {
+    grid-area: line1;
+}
+
+.info > p {
+    grid-area: paragraph;
+}
+
+.info > .horizontal-line2 {
+    grid-area: line2;
+}
+
+.info > ul {
+    grid-area: contacts;
+}
+/* Info subsection layout - End */
+/* About section layout - End */
+/* Projects section layout - Start */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+/* Project subsection layout - Start */
+.project {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'image'
+        'paragraph'
+        'link'
+;
+    grid-gap: 10px;
+    grid-template-rows: 60px auto 80px auto;
+}
+
+.project > h1 {
+    grid-area: header;
+}
+
+.project > img {
+    grid-area: image;
+}
+
+.project > p {
+    grid-area: paragraph;
+}
+
+.project > span {
+    grid-area: link;
+}
+/* Project subsection layout - End */
+/* Projects section layout - End */
+/* Main layout - End */
+/* Footer layout - Start */
+.wrapper > footer {
+    display: grid;
+    grid-template-areas:
+        'license contacts'
+;
+}
+
+footer > span {
+    grid-area: license;
+}
+
+footer > ul {
+    grid-area: contacts;
+}
+/* Footer layout - End */

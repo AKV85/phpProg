@@ -1,0 +1,235 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: SansSerif, "Roboto Light", "DejaVu Sans", serif;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.wrapper {
+    background-color: var(--wrapper-color);
+}
+
+/* Header style - Start */
+header {
+    background-color: var(--header-color);
+}
+
+.portfolio {
+    width: 100%;
+}
+
+.portfolio h1 {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 2%;
+}
+
+.portfolio h1 > a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.navigation {
+    width: 100%;
+}
+
+nav ul {
+    display: block;
+    margin: 0;
+}
+
+nav li {
+    float: right;
+    display: grid;
+    padding: 10px;
+    margin: 1%;
+}
+
+nav li.contact-me {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+nav li > a {
+    color: black;
+    text-decoration: none;
+}
+/* Header style - End */
+/* Main style - Start */
+/* About div style - Start */
+.about {
+    background-color: var(--about-color);
+    place-items: center;
+}
+/* Image section style - Start */
+
+.profile-photo {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.vert-align {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.profile-photo > img {
+    width: 50%;
+    border: 5px solid black;
+    border-radius: 25px;
+    vertical-align: middle;
+}
+/* Image section style - End */
+/* Vertical line section style - Start */
+.vertical-line {
+    border-right: 5px solid var(--line-color);
+    border-radius: 5px;
+    height: 100%;
+}
+/* Vertical line section style - End */
+/* Info section style - Start */
+.info {
+    place-items: center;
+}
+
+.info > p {
+    text-align: center;
+}
+
+.horizontal-line1, .horizontal-line2 {
+    border-bottom: 5px solid var(--line-color);
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Contacts list style - Start */
+.info ul {
+    width: 50%;
+}
+
+.info li {
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid var(--line-color);
+    border-radius: 5px;
+    background-color: var(--contact-color);
+}
+
+.info li > p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Contact icons - Start */
+.email {
+    list-style-image: url("../images/mail.png");
+}
+
+.phone {
+    list-style-image: url("../images/phone.png");
+}
+
+.github {
+    list-style-image: url("../images/github.png");
+}
+
+.linkedin {
+    list-style-image: url("../images/linkedin.png");
+}
+
+
+.facebook {
+    list-style-image: url("../images/facebook.png");
+}
+/* Contact icons - End */
+
+.info li > p > a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+/* Contacts list style - End */
+/* Info section style - End */
+/* About div style - End */
+/* Project div style - Start */
+.projects {
+    background-color: var(--projects-color);
+    padding: 5px;
+}
+
+.project {
+    align-items: center;
+    background-color: var(--project-color);
+    border: 2px solid var(--line-color);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.project > h1 {
+    text-align: center;
+}
+
+.project-photo {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.project-photo > img {
+    width: 75%;
+}
+
+.project > p {
+    text-align: center;
+}
+
+.project > .projekto-nuoroda {
+    border: 2px solid var(--line-color);
+    border-radius: 5px;
+    background-color: var(--contact-color);
+    padding: 5px;
+}
+
+.project .projekto-nuoroda > a {
+    text-decoration: none;
+}
+
+.project .projekto-nuoroda > a > p {
+    margin: 0;
+    padding: 0;
+    color: var(--font-color);
+    text-align: center;
+}
+/* Project div style - End */
+/* Main style - End */
+/* Footer style - Start */
+footer {
+    background-color: var(--footer-color);
+    place-items: center;
+}
+
+footer ul {
+    margin: 0;
+}
+
+footer li {
+    float: left;
+    display: block;
+    padding: 10px;
+}
+
+footer li > a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+/* Footer style - End */
