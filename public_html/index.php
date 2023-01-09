@@ -5,49 +5,39 @@ use AKport\Controllers\AdminController;
 use AKport\Controllers\PradziaController;
 use AKport\Controllers\PortfolioController;
 use AKport\Controllers\KontaktaiController;
-use AKport\Exceptions\MissingVariableException;
-use AKport\Exceptions\UnauthenticatedException;
-use AKport\Exceptions\PageNotFoundException;
-use AKport\FS;
+use AKport\ExceptionHandler;
 use AKport\Output;
 use AKport\Router;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-use AKport\HtmlRender;
 
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . "/../vendor/larapack/dd/src/helper.php";
+require __DIR__ . '/../vendor/larapack/dd/src/helper.php';
 
-$log = new Logger('Portfolios');
-$log->pushHandler(new StreamHandler('../logs/klaidos.log', Logger::WARNING));
+$log = new Logger('Portfolio');
+$log->pushHandler(new StreamHandler('../logs/klaidos.log', Logger::INFO));
 
 $output = new Output();
 
 try {
     session_start();
 
-//    // Autentifikuojam vartotoja, tikrinam jo prisijungimo busena
-//    $authenticator = new Authenticator();
-//    $authenticator->authenticate($_POST['username'] ?? null, $_POST['password'] ?? null);
+  $authenticator = new Authenticator();
+  $adminController = new AdminController($authenticator);
+  $kontaktaiController = new KontaktaiController($log);
 
     $router = new Router();
     $router->addRoute('GET', '', [new PradziaController(), 'index']);
-    $router->addRoute('GET', 'admin', [new AdminController(), 'index']);
-    $router->addRoute('GET', 'kontaktai', [new KontaktaiController(), 'index']);
+    $router->addRoute('GET', 'admin', [$adminController, 'index']);
+    $router->addRoute('POST', 'login', [$adminController, 'login']);
+    $router->addRoute('GET', 'kontaktai', [$kontaktaiController, 'index']);
     $router->addRoute('GET', 'portfolio', [new PortfolioController(), 'index']);
+    $router->addRoute('GET', 'logout', [$adminController, 'logout']);
     $router->run();
-} catch (AKport\Exceptions\PageNotFoundException $e) {
-    $output->store('Neradau puslapio');
-    $log->warning($e->getMessage());
-} catch (AKport\Exceptions\UnauthenticatedException $e) {
-    $output->store('Neteisingi prisijungimo duomenys');
-    $log->warning($e->getMessage());
-} catch (AKport\Exceptions\MissingVariableException $e) {
-    $output->store('Kilo klaida templeite.');
-    $log->warning($e->getMessage());
-} catch (Exception $e) {
-    $output->store('Oi nutiko klaida! Bandyk vėliau dar karta.');
-    $log->error($e->getMessage());
+}
+catch (Exception $e) {
+    $handler = new ExceptionHandler($output, $log);
+    $handler->handle($e);
 }
 
 // Spausdinam viska kas buvo 'Storinta' Output klaseje

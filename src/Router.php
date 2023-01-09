@@ -8,31 +8,44 @@ class Router
 {
     private array $routes = [];
 
-    public function addRoute(string $method, string $url, array $controllerData): void//Funkcijos pavadinimas
-        // yra "addRoute", ji priima tris parametrus: "string" tipo "method", "string" tipo "url" ir "array"
-        // tipo "controllerData", ir ji negrąžina jokio rezultato (`void`).
+    /**
+     * Prideda Routus į $this->routes masyvą
+     *
+     * @param string $path
+     * @param string $controller
+     * @param string $method
+     */
+    public function addRoute(string $method, string $url, array $controllerData): void
     {
-        $this->routes[$method][$url] = $controllerData;// Ši eilutė prideda naują maršrutą į $routes masyvą.
+        $this->routes[$method][$url] = $controllerData;
     }
 
-    public function run():void//
+    /**
+     * @throws PageNotFoundException
+     */
+    public function run():void
     {
-        $method = $_SERVER['REQUEST_METHOD'];// $method yra kintamasis, kuris saugo HTTP užklausos tipą
-        // (pvz., "GET", "POST" ir t.t.).
-        $url = $_SERVER['REQUEST_URI'];// $url yra kintamasis, kuris saugo užklausimo URL.
-        $url = explode('?', $url)[0];// Ši eilutė išskiria URL nuo galimų URL parametrų.
-        $url = rtrim($url, '/'); // /admin/ => /admin    Ši eilutė ištrina visus "/" simbolius
-        $url = ltrim($url, '/'); // admin/ -> admin
+        // Iš $_SERVER paimame užklausos metodą ir URL adresą
+        $method = $_SERVER['REQUEST_METHOD'];
+        $url = $_SERVER['REQUEST_URI'];
+        $url = explode('?', $url)[0];
+        $url = rtrim($url, '/');
+        $url = ltrim($url, '/');
 
-        if (isset($this->routes[$method][$url])) {// Jei toks maršrutas yra nustatytas,
-            $controllerData = $this->routes[$method][$url];// išsaugome kontrolerio duomenis į $controllerData kintamąjį,
-            $controller = $controllerData[0];// išsaugome kontrolerio pavadinimą į $controller kintamąjį,
-            $action = $controllerData[1];// išsaugome veiksmo pavadinimą į $action kintamąjį,
-            $response = $controller->$action();// ir paleidžiame nurodytą veiksmą su $response kintamuoju.
+        // Tikriname ar yra toks URL adresas ir metodas sukurtas mūsų $this->routes masyve
+        if (isset($this->routes[$method][$url])) {
+//            error_log("Puslapis atidarytas", 3, "../logs/klaidos.log");
+            // Iš $this->routes masyvo paimame controller klasės pavadinimą ir metodą
+            $controllerData = $this->routes[$method][$url];
+            $controller = $controllerData[0];
+            $action = $controllerData[1];
+            // Iškviečiamas kontrolierio ($controller) objektas ir kviečiamas jo metodas ($action)
+            $response = $controller->$action();
         } else {
-            throw new PageNotFoundException('404');// išmetame "PageNotFoundException" klaidą su tekstu "404".
+            throw new PageNotFoundException("Adresas: [$method] /$url nerastas");
         }
 
-        echo $response;// Išvedame atsakymą į naršyklę.
+        // Spausinam $response kuris gautas iš Controllerio atitinkamo metodo
+        echo $response;
     }
 }
