@@ -18,25 +18,22 @@ body {
 
 /* Header style - Start */
 header {
+    margin: 5px;
     background-color: var(--header-color);
 }
 
-.portfolio {
-    width: 100%;
+.portfolioLogo {
+    height: 100px;
+    width: 100px;
+
+}
+.portfolioLogo > img{
+    width: 75px;
+    border: 5px solid black;
+    border-radius: 25px;
+    vertical-align: center;
 }
 
-.portfolio h1 {
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 2%;
-}
-
-.portfolio h1 > a {
-    text-decoration: none;
-    color: var(--font-color);
-}
 
 .navigation {
     width: 100%;
@@ -56,8 +53,8 @@ nav li {
 
 nav li.contact-me {
     border: 2px solid black;
-    border-radius: 5px;
-    background-color: white;
+    border-radius: 25px;
+    background-color:antiquewhite;
 }
 
 nav li > a {
@@ -216,6 +213,7 @@ nav li > a {
 footer {
     background-color: var(--footer-color);
     place-items: center;
+    margin: 5px;
 }
 
 footer ul {

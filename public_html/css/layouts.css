@@ -36,13 +36,19 @@ body {
 ;
 }
 
-header > .portfolio {
+/*header > .portfolio {*/
+/*    display: grid;*/
+/*    grid-area: header;*/
+/*    align-items: center;*/
+/*    justify-content: left;*/
+/*}*/
+header > .portfolioLogo
+{
     display: grid;
     grid-area: header;
     align-items: center;
     justify-content: left;
 }
-
 header > nav {
     display: grid;
     grid-area: navigation;
