@@ -1,0 +1,66 @@
+create table `groups` (
+	id INT,
+	title VARCHAR(50),
+	address_id VARCHAR(50),
+	state_id INT
+);
+insert into `groups` (id, title, address_id, state_id) values (1, 'Skinix', '9847 Surrey Plaza', 1);
+insert into `groups` (id, title, address_id, state_id) values (2, 'Roodel', '2959 Hanson Plaza', 2);
+insert into `groups` (id, title, address_id, state_id) values (3, 'Riffpath', '1 Randy Road', 3);
+insert into `groups` (id, title, address_id, state_id) values (4, 'Blogpad', '42 Susan Road', 4);
+insert into `groups` (id, title, address_id, state_id) values (5, 'Gabtype', '7472 Montana Junction', 5);
+insert into `groups` (id, title, address_id, state_id) values (6, 'Riffwire', '7801 Ruskin Point', 6);
+insert into `groups` (id, title, address_id, state_id) values (7, 'Photobug', '77 Manley Circle', 7);
+insert into `groups` (id, title, address_id, state_id) values (8, 'Gabtype', '59 Longview Parkway', 8);
+insert into `groups` (id, title, address_id, state_id) values (9, 'Roombo', '648 Grasskamp Street', 9);
+insert into `groups` (id, title, address_id, state_id) values (10, 'Flipopia', '39 Mesta Circle', 10);
+insert into `groups` (id, title, address_id, state_id) values (11, 'Voonyx', '068 Schurz Junction', 11);
+insert into `groups` (id, title, address_id, state_id) values (12, 'Thoughtworks', '50959 Tomscot Place', 12);
+insert into `groups` (id, title, address_id, state_id) values (13, 'Flipstorm', '0062 Paget Plaza', 13);
+insert into `groups` (id, title, address_id, state_id) values (14, 'Trilia', '51 Ohio Circle', 14);
+insert into `groups` (id, title, address_id, state_id) values (15, 'Gigaclub', '72144 Garrison Drive', 15);
+insert into `groups` (id, title, address_id, state_id) values (16, 'Fliptune', '64228 Crownhardt Lane', 16);
+insert into `groups` (id, title, address_id, state_id) values (17, 'Youspan', '7 Northridge Pass', 17);
+insert into `groups` (id, title, address_id, state_id) values (18, 'Thoughtblab', '875 Division Court', 18);
+insert into `groups` (id, title, address_id, state_id) values (19, 'Quinu', '73 Weeping Birch Junction', 19);
+insert into `groups` (id, title, address_id, state_id) values (20, 'Fadeo', '59 Burrows Road', 20);
+insert into `groups` (id, title, address_id, state_id) values (21, 'Geba', '86 Fulton Avenue', 21);
+insert into `groups` (id, title, address_id, state_id) values (22, 'Skilith', '7068 John Wall Street', 22);
+insert into `groups` (id, title, address_id, state_id) values (23, 'Quatz', '5 Hoepker Lane', 23);
+insert into `groups` (id, title, address_id, state_id) values (24, 'Meejo', '07 Claremont Center', 24);
+insert into `groups` (id, title, address_id, state_id) values (25, 'Fivebridge', '72 Onsgard Road', 25);
+insert into `groups` (id, title, address_id, state_id) values (26, 'Einti', '3411 Carpenter Parkway', 26);
+insert into `groups` (id, title, address_id, state_id) values (27, 'Wikizz', '41584 Evergreen Avenue', 27);
+insert into `groups` (id, title, address_id, state_id) values (28, 'Photojam', '5 Hayes Park', 28);
+insert into `groups` (id, title, address_id, state_id) values (29, 'Trilith', '199 Blackbird Circle', 29);
+insert into `groups` (id, title, address_id, state_id) values (30, 'Browsetype', '5158 Nancy Point', 30);
+insert into `groups` (id, title, address_id, state_id) values (31, 'Yakitri', '1630 Comanche Hill', 31);
+insert into `groups` (id, title, address_id, state_id) values (32, 'Quaxo', '69547 Helena Lane', 32);
+insert into `groups` (id, title, address_id, state_id) values (33, 'Quimba', '580 Duke Park', 33);
+insert into `groups` (id, title, address_id, state_id) values (34, 'Jaxnation', '0790 Maple Wood Street', 34);
+insert into `groups` (id, title, address_id, state_id) values (35, 'Fadeo', '42681 Jana Circle', 35);
+insert into `groups` (id, title, address_id, state_id) values (36, 'Rhybox', '18 Katie Plaza', 36);
+insert into `groups` (id, title, address_id, state_id) values (37, 'Fadeo', '25055 Jana Hill', 37);
+insert into `groups` (id, title, address_id, state_id) values (38, 'Plajo', '638 Bartillon Alley', 38);
+insert into `groups` (id, title, address_id, state_id) values (39, 'Eazzy', '1720 Golf View Crossing', 39);
+insert into `groups` (id, title, address_id, state_id) values (40, 'Bluejam', '22009 Stone Corner Park', 40);
+insert into `groups` (id, title, address_id, state_id) values (41, 'Twitterworks', '102 Cascade Crossing', 41);
+insert into `groups` (id, title, address_id, state_id) values (42, 'Zoovu', '3341 Gina Point', 42);
+insert into `groups` (id, title, address_id, state_id) values (43, 'Camimbo', '156 Oriole Pass', 43);
+insert into `groups` (id, title, address_id, state_id) values (44, 'Buzzbean', '80236 Russell Lane', 44);
+insert into `groups` (id, title, address_id, state_id) values (45, 'Centizu', '7329 Walton Street', 45);
+insert into `groups` (id, title, address_id, state_id) values (46, 'Katz', '97 Magdeline Alley', 46);
+insert into `groups` (id, title, address_id, state_id) values (47, 'Shufflebeat', '15927 Leroy Pass', 47);
+insert into `groups` (id, title, address_id, state_id) values (48, 'Gabcube', '010 Erie Alley', 48);
+insert into `groups` (id, title, address_id, state_id) values (49, 'Dabshots', '9920 Carey Parkway', 49);
+insert into `groups` (id, title, address_id, state_id) values (50, 'Avavee', '3869 Messerschmidt Avenue', 50);
+insert into `groups` (id, title, address_id, state_id) values (51, 'Photojam', '524 Westend Center', 51);
+insert into `groups` (id, title, address_id, state_id) values (52, 'Yozio', '98 Hayes Road', 52);
+insert into `groups` (id, title, address_id, state_id) values (53, 'Browsecat', '36 Quincy Lane', 53);
+insert into `groups` (id, title, address_id, state_id) values (54, 'Yamia', '4 Weeping Birch Pass', 54);
+insert into `groups` (id, title, address_id, state_id) values (55, 'Skipfire', '9788 Randy Street', 55);
+insert into `groups` (id, title, address_id, state_id) values (56, 'Aivee', '3544 Packers Crossing', 56);
+insert into `groups` (id, title, address_id, state_id) values (57, 'Kazio', '8 Kipling Lane', 57);
+insert into `groups` (id, title, address_id, state_id) values (58, 'Flipstorm', '322 Colorado Trail', 58);
+insert into `groups` (id, title, address_id, state_id) values (59, 'Skinix', '99644 Lindbergh Way', 59);
+insert into `groups` (id, title, address_id, state_id) values (60, 'Skaboo', '9821 Tony Lane', 60);
