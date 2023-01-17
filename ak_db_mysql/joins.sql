@@ -20,24 +20,24 @@ WHERE states.title = 'Suspended';
 # 'address_id' , ekrane rodyti tik 'persons.first_name' ,
 # 'persons.last_name', address.city' ir 'countries.title'
 #     pilną šalies pavadinimą kur jis gyvena
-SELECT persons.first_name, persons.last_name, addresses.city, countries.title
+SELECT `persons`.first_name, `persons`.last_name, `addresses`.city, `countries`.title
 FROM `persons`
-         LEFT JOIN addresses ON persons.address_id = addresses.id
-         LEFT JOIN countries ON addresses.country_iso = countries.iso
+         LEFT JOIN `addresses` ON `persons`.address_id = `addresses`.id
+         LEFT JOIN `countries` ON `addresses`.country_iso = `countries`.iso
 ;
 # pakoregojam musu lentele countries,kad nesidubliotu iso
 DELETE countries
-FROM countries
+FROM `countries`
          INNER JOIN (SELECT MAX(id) AS lastID, iso
-                     from countries
+                     from `countries`
                      where iso in (select iso
-                                   from countries
+                                   from `countries`
                                    group by iso
                                    having count(*) > 1)
-                     group by iso) duplic on duplic.iso = countries.iso
-where countries.id < duplic.lastID;
+                     group by iso) duplic on duplic.iso = `countries`.iso
+where `countries`.id < duplic.lastID;
 select count(distinct country_iso)
-from addresses;
+from `addresses`;
 # 4.  Suskaičiuoti kiek yra studentų tik aktyviose "Active" grupėse.
 #     Pavaizduoti Grupės pavadinimą ir studentų skaičių tose grupese.
 SELECT COUNT(*)
@@ -58,10 +58,10 @@ where `groups`.id < duplic.lastID;
 SELECT COUNT(*)
 FROM `users`
 WHERE state_id = 4;
-SELECT `groups`.title, count(persons.id) as Studentu_skaicius
+SELECT `groups`.title, count(`persons`.id) as Studentu_skaicius
 FROM `person2gruop`
-         left JOIN `persons` ON person2gruop.person_id = `persons`.id
-         left JOIN `groups` ON person2gruop.groups_id = `groups`.id
+         left JOIN `persons` ON `person2gruop`.person_id = `persons`.id
+         left JOIN `groups` ON `person2gruop`.groups_id = `groups`.id
 where `groups`.state_id = 4
 group by `groups`.title
 ;
@@ -72,22 +72,21 @@ group by `groups`.title
 SELECT COUNT(*)
 FROM `groups`
 WHERE `groups`.title LIKE '%D';#7
-SELECT `groups`.title, count(persons.id) as Studentu_skaicius
+SELECT `groups`.title, count(`persons`.id) as Studentu_skaicius
 FROM `person2gruop`
-         left JOIN `persons` ON person2gruop.person_id = `persons`.id
-         left JOIN `groups` ON person2gruop.groups_id = `groups`.id
+         left JOIN `persons` ON `person2gruop`.person_id = `persons`.id
+         left JOIN `groups` ON `person2gruop`.groups_id = `groups`.id
 WHERE `groups`.title LIKE '%D'
 group by `groups`.title;
 #parodo kiek studentu yra kiekvinoj Dieniuniu studiju
 # grupej
-SELECT concat(persons.first_name, ' ', persons.last_name) AS full_name, `groups`.title
+SELECT concat(`persons`.first_name, ' ', `persons`.last_name) AS full_name, `groups`.title
 FROM `person2gruop`
-         left JOIN `persons` ON person2gruop.person_id = `persons`.id
-         left JOIN `groups` ON person2gruop.groups_id = `groups`.id
+         left JOIN `persons` ON `person2gruop`.person_id = `persons`.id
+         left JOIN `groups` ON `person2gruop`.groups_id = `groups`.id
 WHERE `groups`.title LIKE '%D';
 # atvaizduoja visus studentus ,kurie mokosi diena ir
 # kokioj grupej.
-
 # 6. Pavaizduoti pasirinktos grupės studentus ir pilną adresą viename stulpelyje.
 # (Užklausos salygoje ieskoti pagal grupės pavadinimą ne ID)
 SELECT concat(`groups`.title, ' ', `addresses`.country_iso, ' ', `addresses`.city, ' ', `addresses`.street, ' ',
@@ -111,14 +110,14 @@ FROM `groups`
 WHERE `groups`.title = 'CS_JS_V';#dabar rodo konkrecios grupes adresa
 
 # 7.Surasti visus asmenis (‘persons’) kurie neturi vardo (first_name’) arba pavardės (‘last_name’) ir
-# turi neaktyvų (‘Inactive’) vartotoją (‘users’’) (Jei tokių duomenų nėra prieš atliekant užduotį reikia pakoreguoti persons lentos  duomenis ir pašalinti keleta vardu ir pavardziu)
+# turi neaktyvų (‘Inactive’) vartotoją (‘users’) (Jei tokių duomenų nėra prieš atliekant užduotį reikia pakoreguoti persons lentos  duomenis ir pašalinti keleta vardu ir pavardziu)
 SELECT * FROM `persons` WHERE first_name='' or last_name='';#4 personai
 SELECT * from states where title='Active';#id=3 ir id=4
 SELECT * FROM `users` WHERE state_id between 3 and 4; #335 useriai
-SELECT persons.first_name,persons.last_name,users.name,users.id
+SELECT `persons`.first_name,`persons`.last_name,`users`.name,`users`.id
 FROM `users`
-         left JOIN `persons` ON users.person_id = `persons`.id
-         left JOIN `states` ON states.id = `users`.state_id
+         left JOIN `persons` ON `users`.person_id = `persons`.id
+         left JOIN `states` ON `states`.id = `users`.state_id
 WHERE `states`.title='Active' and persons.first_name='' or persons.last_name=''; #surado 2 vartotojus
 
 # 8.Suskaičiuoti kiek grupių naudojasi tais pačiais adresais. Atvaizduoti kiekio stulpelį
