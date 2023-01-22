@@ -6,7 +6,7 @@ use AKport\Authenticator;
 use AKport\Exceptions\UnauthenticatedException;
 use AKport\HtmlRender;
 
-class AdminController
+class AdminController  extends BaseController
 {
     private Authenticator $authenticator;
 

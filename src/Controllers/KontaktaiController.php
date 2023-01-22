@@ -5,7 +5,7 @@ namespace AKport\Controllers;
 use AKport\FS;
 use Monolog\Logger;
 
-class KontaktaiController
+class KontaktaiController extends BaseController
 {
     private Logger $log;
 
