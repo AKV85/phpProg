@@ -4,6 +4,7 @@ namespace AKport;
 
 use AKport\Exceptions\PageNotFoundException;
 use AKport\Request;
+use Exception;
 
 class Router
 {
@@ -11,7 +12,7 @@ class Router
      * @param Output $output
      * @param array $routes
      */
-    public function __construct(protected Output $output, private array $routes = [])
+    public function __construct(protected Output $output, protected HtmlRender $render, protected array $routes = [])
     {
     }
 
@@ -55,9 +56,11 @@ class Router
             $controllerData = $this->routes[$method][$url];
             $controller = $controllerData[0];
             $action = $controllerData[1];
+
             // Iškviečiamas kontrolierio ($controller) objektas ir kviečiamas jo metodas ($action)
             $request = new Request();
             $response = $controller->$action($request);
+
             if($response instanceof Response && $response->redirect) {
                 header('location: ' . $response->redirectUrl);
                 $response->redirect = false;
@@ -65,12 +68,11 @@ class Router
             }
 
             if (!$response instanceof Response) {
-                throw new \Exception("Controllerio $controller metodas '$action' turi grąžinti Response objektą");
+                throw new Exception("Controllerio $controller metodas '$action' turi grąžinti Response objektą");
             }
 
             // Iškviečiamas Render klasės objektas ir jo metodas setContent()
-            $render = new HtmlRender($this->output);
-            $render->setContent($response->content);
+            $this->render->setContent($response->content);
 
             // Spausdinam viska kas buvo 'Storinta' Output klaseje
             $this->output->print();

@@ -2,22 +2,26 @@
 
 namespace AKport\Controllers;
 
+use AKport\HtmlRender;
 use AKport\Response;
 
 class BaseController
 {
-    protected Response $response;
-
     const TITLE = 'Mano puslapis';
 
-    public function __construct()
+    public function __construct(protected HtmlRender $htmlRender, protected Response $response)
     {
-        $this->response = new Response(null);
     }
 
     public function response(mixed $content): Response
     {
         $this->response->content = $content;
+        return $this->response;
+    }
+
+    public function render(string $template, mixed $content = null): Response
+    {
+        $this->response->content = $this->htmlRender->renderTemplate($template, $content);
         return $this->response;
     }
 

@@ -8,6 +8,7 @@ use AKport\Controllers\PradziaController;
 use AKport\ExceptionHandler;
 use AKport\Output;
 use AKport\Router;
+use DI\ContainerBuilder;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -22,13 +23,15 @@ $output = new Output();
 try {
     session_start();
 
-    $authenticator = new Authenticator();
-    $adminController = new AdminController($authenticator);
-    $kontaktaiController = new KontaktaiController($log);
-    $personController = new PersonController();
+    $containerBuilder = new ContainerBuilder();
+    $container = $containerBuilder->build();
 
-    $router = new Router($output);
-    $router->addRoute('GET', '', [new PradziaController(), 'index']);
+    $adminController = $container->get(AdminController::class);
+    $kontaktaiController = $container->get(KontaktaiController::class);
+    $personController = $container->get(PersonController::class);
+
+    $router = $container->get(Router::class);
+    $router->addRoute('GET', '', [$container->get(PradziaController::class), 'index']);
     $router->addRoute('GET', 'admin', [$adminController, 'index']);
     $router->addRoute('POST', 'login', [$adminController, 'login']);
     $router->addRoute('GET', 'logout', [$adminController, 'logout']);
@@ -45,4 +48,5 @@ try {
 catch (Exception $e) {
     $handler = new ExceptionHandler($output, $log);
     $handler->handle($e);
+    $output->print();
 }
