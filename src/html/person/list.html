@@ -1,10 +1,19 @@
 <h1>Persons</h1>
 <hr>
 <div class="content">
-  <a href="/person/new" class="btn-floating pulse waves-effect waves-light red btn-small"><i class="tiny material-icons">add</i></a>
-  <a href="/persons">10</a> |
-  <a href="/persons?amount=20">20</a> |
-  <a href="/persons?amount=50">50</a>
-  <hr>
-  {{content}}
+    <a href="/person/new" class="btn-floating pulse waves-effect waves-light red btn-small"><i
+            class="tiny material-icons">add</i></a>
+    <a href="/persons">10</a>
+    <a href="/persons?amount=20">20</a>
+    <a href="/persons?amount=50">50</a>
+    <hr>
+    <form action="/persons" method="get">
+        <div class="input-field">
+            <input type="text" name="searchInput" id="searchInput">
+            <label for="searchInput">Search</label>
+        </div>
+        <button type="submit" class="btn waves-effect waves-light">Search</button>
+    </form>
+
+    {{content}}
 </div>

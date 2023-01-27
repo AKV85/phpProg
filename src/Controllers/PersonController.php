@@ -3,8 +3,8 @@
 namespace AKport\Controllers;
 
 use AKport\Database;
-use AKport\FS;
 use AKport\HtmlRender;
+use AKport\Managers\PersonsManager;
 use AKport\Request;
 use AKport\Response;
 use AKport\Validator;
@@ -14,29 +14,16 @@ class PersonController extends BaseController
 {
     public const TITLE = 'Asmenys';
 
+    public function __construct(protected PersonsManager $manager, Response $response, HtmlRender $htmlRender)
+    {
+        parent::__construct($htmlRender, $response);
+    }
+
     public function list(Request $request): Response
     {
-        $config = new Configs();
-        $db = new Database($config);
-
-        $kiekis = $request->get('amount', 10);
-        $orderBy = $request->get('orderby', 'id');
-
-        $searchQuery = '';
-        $params = [];
-        $search = $request->get('search');
-        if ($search) {
-            $searchQuery = "WHERE first_name LIKE :search OR last_name LIKE :search OR code LIKE :search";
-            $params['search'] = '%' . $search . '%';
-        }
-
-        $asmenys = $db->query('SELECT p.*, concat(c.title, \' - \', a.city, \' - \', a.street, \' - \', a.postcode) address
-                    FROM persons p
-                        LEFT JOIN addresses a on p.address_id = a.id 
-                        LEFT JOIN countries c on a.country_iso = c.iso 
-                        ' . $searchQuery . '
-                        ORDER BY ' . $orderBy . ' DESC LIMIT ' . $kiekis,
-            $params);
+        $amount = $request->get('amount') ?? 10;
+        $search = $request->get('searchInput') ?? '';
+        $asmenys = $this->manager->getAll($search, $amount);
 
         $rez = $this->generatePersonsTable($asmenys);
 
@@ -56,14 +43,7 @@ class PersonController extends BaseController
         Validator::numeric((int)$request->get('code'));
         Validator::asmensKodas((int)$request->get('code'));
 
-        $conf = new Configs();
-        $conn = new Database($conf);
-
-        $conn->query(
-            "INSERT INTO `persons` (`first_name`, `last_name`, `code`)
-                    VALUES (:first_name, :last_name, :code)",
-            $request->all()
-        );
+        $this->manager->insertPerson($request->all());
 
         return $this->redirect('/persons', ['message' => "Record created successfully"]);
     }
@@ -76,20 +56,15 @@ class PersonController extends BaseController
         Validator::numeric($kuris);
         Validator::min($kuris, 1);
 
-        $conf = new Configs();
-        $db = new Database($conf);
-
-        $db->query("DELETE FROM `persons` WHERE `id` = :id", ['id' => $kuris]);
+        $this->manager->deleteOne($kuris);
 
         return $this->redirect('/persons', ['message' => "Record deleted successfully"]);
     }
 
+
     public function edit(Request $request): Response
     {
-        $conf = new Configs();
-        $db = new Database($conf);
-
-        $person = $db->query("SELECT * FROM `persons` WHERE `id` = :id", ['id' => $request->get('id')])[0];
+        $person = $this->manager->getOne((int)$request->get('id'));
 
         return $this->render('person/edit', $person);
     }
@@ -102,30 +77,14 @@ class PersonController extends BaseController
         Validator::numeric($request->get('code'));
         Validator::asmensKodas($request->get('code'));
 
-        $conf = new Configs();
-        $db = new Database($conf);
-
-        $db->query(
-            "UPDATE `persons` 
-                    SET `first_name` = :first_name, 
-                        `last_name` = :last_name, 
-                        `code` = :code, 
-                        `email` = :email,          
-                        `phone` = :phone, 
-                        `address_id` = :address_id 
-                    WHERE `id` = :id",
-            $request->all()
-        );
+        $this->manager->update($request->all());
 
         return $this->redirect('/person/show?id='.$request->get('id'), ['message' => "Record updated successfully"]);
     }
 
     public function show(Request $request): Response
     {
-        $conf = new Configs();
-        $db = new Database($conf);
-
-        $person = $db->query("SELECT * FROM `persons` WHERE `id` = :id", ['id' => $request->get('id')])[0];
+        $person = $this->manager->getOneById((int)$request->get('id'));
 
         return $this->render('person/show', $person);
     }
