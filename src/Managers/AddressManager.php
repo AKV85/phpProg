@@ -2,12 +2,12 @@
 
 namespace AKport\Managers;
 
-use AKport\Repositories\PersonsRepository;
+use AKport\Repositories\AddressRepository;
 use AKport\Request;
 
-class PersonsManager extends BaseManager
+class AddressManager extends BaseManager
 {
-    public function __construct(protected PersonsRepository $repository)
+    public function __construct(protected AddressRepository $repository)
     {
     }
 

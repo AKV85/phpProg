@@ -4,6 +4,7 @@ use AKport\Authenticator;
 use AKport\Controllers\AdminController;
 use AKport\Controllers\KontaktaiController;
 use AKport\Controllers\PersonController;
+use AKport\Controllers\AddressController;
 use AKport\Controllers\PradziaController;
 use AKport\ExceptionHandler;
 use AKport\Output;
@@ -29,6 +30,7 @@ try {
     $adminController = $container->get(AdminController::class);
     $kontaktaiController = $container->get(KontaktaiController::class);
     $personController = $container->get(PersonController::class);
+    $addressController = $container->get(AddressController::class);
 
     $router = $container->get(Router::class);
     $router->addRoute('GET', '', [$container->get(PradziaController::class), 'index']);
@@ -43,6 +45,13 @@ try {
     $router->addRoute('GET', 'person/show', [$personController, 'show']);
     $router->addRoute('POST', 'person', [$personController, 'store']);
     $router->addRoute('POST', 'person/update', [$personController, 'update']);
+    $router->addRoute('GET', 'addresses', [$addressController, 'list']);
+    $router->addRoute('GET', 'address/new', [$addressController, 'new']);
+    $router->addRoute('GET', 'address/delete', [$addressController, 'delete']);
+    $router->addRoute('GET', 'address/edit', [$addressController, 'edit']);
+    $router->addRoute('GET', 'address/show', [$addressController, 'show']);
+    $router->addRoute('POST', 'address', [$addressController, 'store']);
+    $router->addRoute('POST', 'address/update', [$addressController, 'update']);
     $router->run();
 }
 catch (Exception $e) {
