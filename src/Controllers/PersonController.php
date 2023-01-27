@@ -2,13 +2,11 @@
 
 namespace AKport\Controllers;
 
-use AKport\Database;
 use AKport\HtmlRender;
 use AKport\Managers\PersonsManager;
 use AKport\Request;
 use AKport\Response;
 use AKport\Validator;
-use AKport\Configs;
 
 class PersonController extends BaseController
 {
@@ -21,13 +19,15 @@ class PersonController extends BaseController
 
     public function list(Request $request): Response
     {
-        $amount = $request->get('amount') ?? 10;
-        $search = $request->get('searchInput') ?? '';
-        $asmenys = $this->manager->getAll($search, $amount);
+        $persons = $this->manager->getFiltered($request);
+        $total = $this->manager->getTotal();
+        $rez = $this->generatePersonsTable($persons);
 
-        $rez = $this->generatePersonsTable($asmenys);
-
-        return $this->render('person/list', $rez);
+        return $this->render(
+            'person/list',
+            ['content' => $rez, 'pagination' => $this->generatePagination($total, $request), 'title' => self::TITLE],
+            ['title' => self::TITLE]
+        );
     }
 
     public function new(): Response
@@ -39,28 +39,30 @@ class PersonController extends BaseController
     {
         Validator::required($request->get('first_name'));
         Validator::required($request->get('last_name'));
+        Validator::required($request->get('email'));
+        Validator::required($request->get('phone'));
+        Validator::required($request->get('address_id'));
         Validator::required((int)$request->get('code'));
         Validator::numeric((int)$request->get('code'));
         Validator::asmensKodas((int)$request->get('code'));
 
-        $this->manager->insertPerson($request->all());
+        $this->manager->store($request->all());
 
         return $this->redirect('/persons', ['message' => "Record created successfully"]);
     }
 
     public function delete(Request $request): Response
     {
-        $kuris = (int)$request->get('id');
+        $id = (int)$request->get('id');
 
-        Validator::required($kuris);
-        Validator::numeric($kuris);
-        Validator::min($kuris, 1);
+        Validator::required($id);
+        Validator::numeric($id);
+        Validator::min($id, 1);
 
-        $this->manager->deleteOne($kuris);
+        $this->manager->delete($id);
 
         return $this->redirect('/persons', ['message' => "Record deleted successfully"]);
     }
-
 
     public function edit(Request $request): Response
     {
@@ -79,12 +81,12 @@ class PersonController extends BaseController
 
         $this->manager->update($request->all());
 
-        return $this->redirect('/person/show?id='.$request->get('id'), ['message' => "Record updated successfully"]);
+        return $this->redirect('/person/show?id=' . $request->get('id'), ['message' => "Record updated successfully"]);
     }
 
     public function show(Request $request): Response
     {
-        $person = $this->manager->getOneById((int)$request->get('id'));
+        $person = $this->manager->getOne((int)$request->get('id'));
 
         return $this->render('person/show', $person);
     }
